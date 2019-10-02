@@ -4,7 +4,11 @@
 
 
 <h3>Technologies Used</h3>
-
+> Mongoose
+> Express
+> React
+> Node
+ 
 
 
 <h3>Getting Started</h3>

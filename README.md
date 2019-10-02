@@ -4,13 +4,10 @@
 
 
 <h3>Technologies Used</h3>
-> Mongoose
-> Express
-> React
+> Mongoose<br>
+> Express<br>
+> React<br>
 > Node
- 
-
-
 <h3>Getting Started</h3>
 
 

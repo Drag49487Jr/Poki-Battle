@@ -7,12 +7,14 @@
 > Mongoose<br>
 > Express<br>
 > React<br>
-> Node
-> Axios
+> Node<br>
+> Axios<br>
 > PokiApi
 <h3>Getting Started</h3>
 
-ERD ![Imgur](https://i.imgur.com/TIhDAnm.png)
+![Imgur](https://i.imgur.com/TIhDAnm.png)
+
+![Imgur](https://i.imgur.com/wa3yMOf.png)
 
 
 <h3>Unsolved Problems</h3>

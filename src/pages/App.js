@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import axios from 'axios';
 // import PokiApi from './services/PokiApi'
-import SearchPokemon from './components/SearchPokemon/SearchPokemon';
+import SearchPokemon from '../components/SearchPokemon/SearchPokemon';
 
 class App extends Component {
   constructor() {

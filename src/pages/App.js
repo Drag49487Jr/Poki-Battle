@@ -17,8 +17,6 @@ class App extends Component {
     }
   }
 
-
-
   async componentDidMount() {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&&limit=964`)
     // .then(res => console.log(res.data));
@@ -26,6 +24,7 @@ class App extends Component {
       this.setState({pokemon: res.data.results})
     })
   }
+
   handleSearch = event => {
     event.preventDefault();
     const result = this.state.pokemon.filter((elem) =>
@@ -46,6 +45,15 @@ class App extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
+  handlelogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+  }
+
+  handleSignupOrLogin = () => {
+    this.setState({ user: userService.getUser()});
+  }
+  
   render() {
     return (
       <div className="App">

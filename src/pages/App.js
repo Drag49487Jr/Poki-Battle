@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
-// import PokiApi from './services/PokiApi'
+import userService from '../utils/userService';
 import SearchPokemon from '../components/SearchPokemon/SearchPokemon';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -11,15 +12,13 @@ class App extends Component {
       pokemon:[],
       searchTerm: '',
       searchResult: {},
-      message: ""
+      message: "",
+      user: userService.getUser()
     }
   }
 
 
-  // async componentDidMount() {
-  //   const {results} = await PokiApi();
-  //   console.log(results)
-  // }
+
   async componentDidMount() {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&&limit=964`)
     // .then(res => console.log(res.data));
@@ -58,7 +57,6 @@ class App extends Component {
             searchResult={this.state.searchResult}
             message={this.state.message}
           />
-          {/* <PokiApi /> */}
         </header>
       </div>
     );

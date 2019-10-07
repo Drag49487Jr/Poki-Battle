@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import { Route, Switch,  } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import userService from '../../utils/userService';
+import PokemonBoard from '../../components/PokemonBoard/PokemonBoard';
 import SearchPokemon from '../../components/SearchPokemon/SearchPokemon';
 import PokemonPage from '../../pages/PokemonPage/PokemonPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import SignupPage from '../../pages/SignupPage/SignupPage';
+import CreateTeamPage from '../../pages/CreateTeamPage/CreateTeamPage'
 import './App.css';
 
 class App extends Component {
@@ -67,26 +69,38 @@ class App extends Component {
             handleLogout={this.handleLogout}
             />
           }/>
-            <Route exact path='/signup' render={({ history }) =>
-            <SignupPage
-            history={history}
-            handleSignupOrLogin={this.handleSignupOrLogin}
+            <Route exact path='/pokemonboard' render={() =>
+            <PokemonBoard 
+            user={this.state.user}
+            handleLogout={this.handleLogout}
             />
           }/>
-            <Route exact path='/login' render={({ history }) =>
-            <LoginPage 
-            history={history}
-            handleSignupOrLogin={this.handleSignupOrLogin}
-            />  
+            <Route exact path='/createteam' render={() =>
+            <CreateTeamPage 
+            user={this.state.user}
+            handleLogout={this.handleLogout}
+            />
           }/>
             <Route exact path='/pokemonsearch' render={() => 
             <SearchPokemon
-              handleSearch={this.handleSearch}
-              handleChange={this.handleChange} 
-              pokemon={this.state.pokemon}
-              searchResult={this.state.searchResult}
-              message={this.state.message}
+            handleSearch={this.handleSearch}
+            handleChange={this.handleChange} 
+            pokemon={this.state.pokemon}
+            searchResult={this.state.searchResult}
+            message={this.state.message}
             />
+          }/>
+          <Route exact path='/signup' render={({ history }) =>
+          <SignupPage
+          history={history}
+          handleSignupOrLogin={this.handleSignupOrLogin}
+            />
+          }/>
+          <Route exact path='/login' render={({ history }) =>
+          <LoginPage 
+          history={history}
+          handleSignupOrLogin={this.handleSignupOrLogin}
+            />  
           }/>
           </Switch>
         </header>

@@ -2,6 +2,32 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 6;
 
+const pokemonSchema = new mongoose.Schema({
+    pokemonName: String,
+    type: String,
+    baseStat: Number, 
+});
+
+const teamSchema = new mongoose.Schema({
+    teamName:String,
+    region:{
+        type:String,
+        enum:[
+            'Oblivia',
+            'Kanto',
+            'Hoenn',
+            'Johto',
+            'Sinnoh',
+            'Alola',
+            'Kalos',
+            'Unova',
+            'Fiore',
+            'Almia'
+        ]
+    },
+    pokemons: [pokemonSchema]
+})
+
 const userSchema = new mongoose.Schema({
     name: String,
     email: {
@@ -10,7 +36,8 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         unique: true,
     }, 
-    password: String
+    password: String,
+    team: [teamSchema]
 }, {
     timestamps: true
 });

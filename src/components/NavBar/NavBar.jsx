@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 const NavBar = (props) => {
     let nav = props.user ?
     <div>
-        <Link to ='' onClick={props.handleLogout}>LOG OUT</Link>
         <span>Welcome, {props.user.name} </span>
+        <Link to ='' onClick={props.handleLogout}>LOG OUT</Link><br></br>
+        <Link to='/createteam'>Create Pokemon Team</Link> 
     </div>
     :
     <div>

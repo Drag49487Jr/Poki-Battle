@@ -12,25 +12,25 @@ class SignupForm extends Component {
     
 
     handleChange = (e) => {
-            this.props.updateMessage('');
-            this.setState({
-                [e.target.name]: e.target.value
-            });
+        this.props.updateMessage('');
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     handleSubmit = async (e) => {
-            e.preventDefault();
-            try {
-                await userService.signup(this.state);
-                this.props.handleSignupOrLogin();
-                this.props.history.push('/');
-            } catch (err) {
-                this.props.updateMessage(err.message);
-            }
+        e.preventDefault();
+        try {
+            await userService.signup(this.state);
+            this.props.handleSignupOrLogin();
+            this.props.history.push('/');
+        } catch (err) {
+            this.props.updateMessage(err.message);
+        }
     }
 
     isFormInvalid() {
-            return !(this.state.name && 
+        return !(this.state.name && 
                 this.state.email && 
                 this.state.password === this.state.passwordConfirm);
     }

@@ -23,7 +23,7 @@ class SignupForm extends Component {
         try {
             await userService.signup(this.state);
             this.props.handleSignupOrLogin();
-            this.props.history.push('/pokemonsearch');
+            this.props.history.push('/');
         } catch (err) {
             this.props.updateMessage(err.message);
         }
@@ -62,8 +62,8 @@ class SignupForm extends Component {
                     </div>
                     <div>
                         <div>
-                            <button disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-                            <Link to='/pokemonsearch'>Cancel</Link>
+                            <button disabled={this.isFormInvalid()}>Sign Up</button>
+                            <Link to='/'>Cancel</Link>
                         </div>
                     </div>
                 </form>

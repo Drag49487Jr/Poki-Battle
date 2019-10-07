@@ -75,9 +75,10 @@ class App extends Component {
             handleLogout={this.handleLogout}
             />
           }/>
-            <Route exact path='/createteam' render={() =>
+            <Route exact path='/createteam' render={({history}) =>
             <CreateTeamPage 
             user={this.state.user}
+            history={history}
             handleLogout={this.handleLogout}
             />
           }/>

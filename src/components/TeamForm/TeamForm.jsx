@@ -3,6 +3,29 @@ import NavBar from '../NavBar/NavBar';
 
 
 class CreateTeam extends Component{
+    constructor() {
+        super();
+        this.state={
+            teamName:'',
+            region:''
+        }
+    }
+
+
+    handleChange = async (e) => {
+        this.setState({...this.state, [e.target.name]:e.target.value })
+    }
+
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            this.props.push('/searchpokemon')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
         return (
             <div>
@@ -11,9 +34,9 @@ class CreateTeam extends Component{
                 user={this.props.user}
                 handleLogout={this.props.handleLogout}
                 />
-                <form>
-                    Enter Team Name:<input type='text'></input>
-                    <select>
+                <form onSubmit={this.handleSubmit}>
+                    Enter Team Name:<input name='teamName' value={this.state.teamName} onChange={this.handleChange} type='text'></input>
+                    <select name='region' value={this.state.region} onChange={this.handleChange}>
                         <option>Oblivia</option>
                         <option>Kanto</option>
                         <option>Hoenn</option>

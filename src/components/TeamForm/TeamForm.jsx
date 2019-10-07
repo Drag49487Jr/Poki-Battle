@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NavBar from '../NavBar/NavBar';
-
+import SearchPokemon from '../SearchPokemon/SearchPokemon'
 
 class CreateTeam extends Component{
     constructor() {
@@ -20,7 +20,13 @@ class CreateTeam extends Component{
     handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            this.props.history.push('/pokemonsearch')
+            this.props.history.push({
+                pathname:'/pokemonsearch',
+                state:{
+                    teamName:(this.state.teamName),
+                    region:(this.state.region)
+                }
+            })
         } catch (err) {
             console.log(err)
         }

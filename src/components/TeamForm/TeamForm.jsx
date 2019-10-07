@@ -20,7 +20,7 @@ class CreateTeam extends Component{
     handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            this.props.push('/searchpokemon')
+            this.props.history.push('/pokemonsearch')
         } catch (err) {
             console.log(err)
         }
@@ -36,7 +36,7 @@ class CreateTeam extends Component{
                 />
                 <form onSubmit={this.handleSubmit}>
                     Enter Team Name:<input name='teamName' value={this.state.teamName} onChange={this.handleChange} type='text'></input>
-                    <select name='region' value={this.state.region} onChange={this.handleChange}>
+                    Select Region: <select name='region' value={this.state.region} onChange={this.handleChange}>
                         <option>Oblivia</option>
                         <option>Kanto</option>
                         <option>Hoenn</option>

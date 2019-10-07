@@ -69,8 +69,9 @@ class App extends Component {
             handleLogout={this.handleLogout}
             />
           }/>
-            <Route exact path='/pokemonboard' render={() =>
+            <Route exact path='/pokemonboard' render={({history}) =>
             <PokemonBoard 
+            history={history}
             user={this.state.user}
             handleLogout={this.handleLogout}
             />
@@ -82,13 +83,16 @@ class App extends Component {
             handleLogout={this.handleLogout}
             />
           }/>
-            <Route exact path='/pokemonsearch' render={() => 
+            <Route exact path='/pokemonsearch' render={({history}) => 
             <SearchPokemon
-            handleSearch={this.handleSearch}
-            handleChange={this.handleChange} 
+            history={history}
+            user={this.state.user}
             pokemon={this.state.pokemon}
             searchResult={this.state.searchResult}
             message={this.state.message}
+            handleLogout={this.handleLogout}
+            handleSearch={this.handleSearch}
+            handleChange={this.handleChange} 
             />
           }/>
           <Route exact path='/signup' render={({ history }) =>

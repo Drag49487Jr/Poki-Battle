@@ -4,10 +4,10 @@ import userService from '../../utils/userService';
 
 class SignupForm extends Component {
     state = {
-            name: '',
-            email: '',
-            password: '',
-            passwordConfirm: ''
+        name: '',
+        email: '',
+        password: '',
+        passwordConfirm: ''
     };
     
 
@@ -23,7 +23,7 @@ class SignupForm extends Component {
         try {
             await userService.signup(this.state);
             this.props.handleSignupOrLogin();
-            this.props.history.push('/');
+            this.props.history.push('/pokemonsearch');
         } catch (err) {
             this.props.updateMessage(err.message);
         }
@@ -63,7 +63,7 @@ class SignupForm extends Component {
                     <div>
                         <div>
                             <button disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-                            <Link to='/'>Cancel</Link>
+                            <Link to='/pokemonsearch'>Cancel</Link>
                         </div>
                     </div>
                 </form>

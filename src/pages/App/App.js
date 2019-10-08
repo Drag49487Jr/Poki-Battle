@@ -18,9 +18,17 @@ class App extends Component {
       searchTerm: '',
       searchResult: {},
       message: "",
-      user: userService.getUser()
+      user: userService.getUser(),
     };
   }
+
+  // async componentDidMount(name) {
+  //   axios.all([
+  //     axios.get(`https://pokeapi.co/api/v2/pokemon`),
+  //     axios.get(Promise.resolve(`https://pokeapi.co/api/v2/pokemon/${name}`))
+  //   ])
+  //   .then(res => this.setState({abilities: console.log(res.data.abilities), stats: res.data.stats}))
+  // }
 
   async componentDidMount() {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&&limit=964`)
@@ -39,7 +47,7 @@ class App extends Component {
         searchResult: result[0], 
         message: "", 
         searchTerm: ""
-      });
+      })
     } else {
       this.setState({message: "Sorry Pokemon Not Found"})
     }
@@ -93,6 +101,7 @@ class App extends Component {
             handleLogout={this.handleLogout}
             handleSearch={this.handleSearch}
             handleChange={this.handleChange} 
+            searchTerm={this.state.searchTerm}
             />
           }/>
           <Route exact path='/signup' render={({ history }) =>

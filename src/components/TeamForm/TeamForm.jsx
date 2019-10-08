@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import NavBar from '../NavBar/NavBar';
-import SearchPokemon from '../SearchPokemon/SearchPokemon'
 
 class CreateTeam extends Component{
     constructor() {

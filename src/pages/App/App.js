@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Route, Switch, } from 'react-router-dom';
-import axios from 'axios';
 import userService from '../../utils/userService';
 import PokemonBoard from '../../components/PokemonBoard/PokemonBoard';
 import SearchPokemon from '../../components/SearchPokemon/SearchPokemon';
@@ -17,7 +16,11 @@ class App extends Component {
       user: userService.getUser(),
     };
   }
-
+  
+  handleLogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+  }
 
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser()});

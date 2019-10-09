@@ -13,7 +13,6 @@ class SearchPokemon extends Component {
                 abilities: [],
                 base_experience: '',
                 height: '',
-                moves: [],
                 name: '',
                 sprites: [],
                 stats: [],
@@ -42,7 +41,6 @@ class SearchPokemon extends Component {
                     stats: res.data.stats,
                     types: res.data.types,
                     sprites: res.data.sprites,
-                    moves: res.data.moves
                 })
             );
             console.log(this.state.searchResult);
@@ -58,16 +56,25 @@ class SearchPokemon extends Component {
     render() {            
         const {region,teamName} = this.props.history.location.state;
         // const { abilities,base_experience,height,name,stats,types,sprites, moves } = this.state.pokemon;
-        // console.log(abilities)
-        // console.log(base_experience)
-        // console.log(height)
-        // console.log(name)
-        // console.log(stats)
-        // console.log(types)
-        // console.log(sprites)
-        // console.log(moves)
-        // console.log(this.state.pokemon);
-        // console.log(this.state.searchResult);
+        const abilityList = this.state.abilities.map((ability) => (
+            'Ability: ' + 
+            ability.ability.name[0].toUpperCase() + 
+            ability.ability.name.substring(1) + '|'
+        ))
+
+        const typeList = this.state.types.map((type) => (
+            'Type: ' + 
+            type.type.name[0].toUpperCase() + 
+            type.type.name.substring(1) + '|'
+        ))
+
+        const statsList = this.state.stats.map((stat) => (
+            'Stats: ' + 
+            stat.stat.name[0].toUpperCase() + 
+            stat.stat.name.substring(1) +':'+ 
+            stat.base_stat +'|'
+        ))
+
         return(
             <div>
                 <NavBar 
@@ -77,19 +84,17 @@ class SearchPokemon extends Component {
                     Region: {region}
                 <h3>Enter Name</h3>
                 <input onChange={this.handleChange} name='searchResult' type='text' /><br/>
-                <button onClick={this.handleSearch}>Search</button>
+                <button onClick={this.handleSearch}>Search</button><br/>
                 <PokemonCard 
                     name={this.state.name}
-                    abilites={this.state.abilities}
                     height={this.state.height}
                     weight={this.state.weight}
-                    moves={this.state.moves}
-                    types={this.state.types}
+                    abilities={abilityList}
+                    types={typeList}
                     sprites={this.state.sprites}
-                    stats={this.state.stats}
+                    stats={statsList}
                     base_experience={this.state.base_experience}
-                    // name={name}
-                />
+                    />
             </div>
         )
     }

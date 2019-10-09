@@ -1,28 +1,49 @@
 import React, {Component} from 'react';
 import NavBar from '../NavBar/NavBar';
+import search from '../../utils/pokeApi'
 import axios from 'axios';
-const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 class SearchPokemon extends Component {
     constructor() {
         super();
             this.state={
-                abilities: [],
-                stats:[]
+                searchTerm: '',
+                // searchResult: {},
+                // message: "",
+                // abilities: [],
+                // stats:[]
             }
     }
     
-
-
-    async componentDidMount() {
-        const data = this.props.searchTerm;
-        // event.preventDefault();
-        // console.log(this.state.searchTerm);
-        await axios.get(`${BASE_URL}${data}`).then(res => this.setState({
-            abilities: res.data.abilities,
-            stats: res.data.stats
-        }));
+    searchPokemon = () => {
+        axios.get('https://pokeapi.co/api/v2/pokemon' + this.state.searchTerm.toLowerCase()).then((res) => console.log(res.data))
     }
+
+    // handleSearch = event => {
+    //     event.preventDefault();
+    //     const { searchTerm } = this.state
+    //     try {
+    //         search(searchTerm)
+    //         .then(res => res.data)
+    //         .then (pokemon => this.setState({ searchResult: pokemon}))
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // };
+    
+    handleChange = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    // async componentDidMount() {
+    //     const data = this.props.searchTerm;
+    //     // event.preventDefault();
+    //     // console.log(this.state.searchTerm);
+    //     await axios.get(`${BASE_URL}${data}`).then(res => this.setState({
+    //         abilities: res.data.abilities,
+    //         stats: res.data.stats
+    //     }));
+    // }
 
     render() {            
             const {region,teamName} = this.props.history.location.state;
@@ -34,19 +55,15 @@ class SearchPokemon extends Component {
                 />
                 TeamName: {teamName}<br />
                 Region: {region}
+
                 <h3>Enter Name</h3>
-                <form>
-                    <input onChange={this.props.handleChange} name="searchTerm" type="text"/>
-                    <button onClick={this.props.handleSearch} type="submit">Search</button>
-                </form>
+                    <input onChange={this.handleChange} name="searchTerm" type="text"/>
+                    <button onClick={this.handleSearch} name='search' type="submit">Search</button>
                 {
-                    !this.props.message && this.props.searchResult.name ? (
+                    !this.message && this.searchResult.name ? (
                         <p>
-                            {this.props.searchResult.name}<br/>
-                            {this.props.searchResult.url} <br/>
-                            {this.state.abilities[0].ability.name} <br/>
-                            {this.state.abilities[1].ability.name}<br/>
-                            {this.state.stats[0].stat.name}
+                            {this.searchResult.name}<br/>
+                            {this.searchResult.url} <br/>
                         </p>
                     )
                     : <p>{this.props.message} </p>
@@ -55,5 +72,7 @@ class SearchPokemon extends Component {
         )
     }
 };
+
+
 
 export default SearchPokemon;

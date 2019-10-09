@@ -14,10 +14,10 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      pokemon:[],
-      searchTerm: '',
-      searchResult: {},
-      message: "",
+      // pokemon:[],
+      // searchTerm: '',
+      // searchResult: {},
+      // message: "",
       user: userService.getUser(),
     };
   }
@@ -30,32 +30,32 @@ class App extends Component {
   //   .then(res => this.setState({abilities: console.log(res.data.abilities), stats: res.data.stats}))
   // }
 
-  async componentDidMount() {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&&limit=964`)
-    .then(res => {
-      this.setState({pokemon: res.data.results})
-    })
-  }
+  // async componentDidMount() {
+  //   axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&&limit=964`)
+  //   .then(res => {
+  //     this.setState({pokemon: res.data.results})
+  //   })
+  // }
 
-  handleSearch = event => {
-    event.preventDefault();
-    const result = this.state.pokemon.filter((elem) =>
-      elem.name === this.state.searchTerm
-    );
-    if(result.length > 0) {
-      this.setState({
-        searchResult: result[0], 
-        message: "", 
-        searchTerm: ""
-      })
-    } else {
-      this.setState({message: "Sorry Pokemon Not Found"})
-    }
-  };
+  // handleSearch = event => {
+  //   event.preventDefault();
+  //   const result = this.state.pokemon.filter((elem) =>
+  //     elem.name === this.state.searchTerm
+  //   );
+  //   if(result.length > 0) {
+  //     this.setState({
+  //       searchResult: result[0], 
+  //       message: "", 
+  //       searchTerm: ""
+  //     })
+  //   } else {
+  //     this.setState({message: "Sorry Pokemon Not Found"})
+  //   }
+  // };
 
-  handleChange = e => {
-    this.setState({[e.target.name]: e.target.value})
-  }
+  // handleChange = e => {
+  //   this.setState({[e.target.name]: e.target.value})
+  // }
 
   handleLogout = () => {
     userService.logout();
@@ -95,13 +95,13 @@ class App extends Component {
             <SearchPokemon
             history={history}
             user={this.state.user}
-            pokemon={this.state.pokemon}
-            searchResult={this.state.searchResult}
-            message={this.state.message}
+            // pokemon={this.state.pokemon}
+            // searchResult={this.state.searchResult}
+            // message={this.state.message}
             handleLogout={this.handleLogout}
-            handleSearch={this.handleSearch}
-            handleChange={this.handleChange} 
-            searchTerm={this.state.searchTerm}
+            // handleSearch={this.handleSearch}
+            // handleChange={this.handleChange} 
+            // searchTerm={this.state.searchTerm}
             />
           }/>
           <Route exact path='/signup' render={({ history }) =>

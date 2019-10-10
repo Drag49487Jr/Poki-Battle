@@ -69,10 +69,6 @@ class SearchPokemon extends Component {
             await userService.addPokemon(
                 this.state.user,
                 this.state.teams,
-                console.log(this.state.teams)
-                // this.state.pokemonName,
-                // this.state.base_experience,
-                // this.state.height,
                 )
             this.props.history.push({
                 pathname:'/pokemonsearch/' + this.props.user._id,
@@ -102,7 +98,6 @@ class SearchPokemon extends Component {
             stat.base_stat +'|'
         ))
 
-        console.log(this.props)
         return(
             <div>
                 <NavBar 

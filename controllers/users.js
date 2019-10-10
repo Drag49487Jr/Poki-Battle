@@ -55,18 +55,11 @@ async function addpokemon(req, res) {
     .then(user => {
         user.team.findById()
     })
-    // let pokemon = user.teams;
-        
-        console.log('ussseerrrrr',user.teams)
-        console.log('bodyyyyyyyyy',req.body)
-    
-        let newPokemon = {
-            pokemonName: req.body.pokemonName,
-            height: req.body.height,
-            base_experience: req.body.base_experience
-        }
-        console.log('NEWWWWWPOKEMON',newPokemon)
-        // pokemon.pokemons.push(newPokemon)
+    let newPokemon = {
+        pokemonName: req.body.pokemonName,
+        height: req.body.height,
+        base_experience: req.body.base_experience
+    }
 }
 
 async function removepokemon(req, res) {

@@ -8,8 +8,6 @@ class CreateTeamPage extends Component {
             <div>
                 TeamForm
                 <TeamForm 
-                    // user={this.props.user}
-                    // handleLogout={this.props.handleLogout}
                     {...this.props}
                 />
             </div>

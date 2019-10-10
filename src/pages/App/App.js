@@ -16,7 +16,6 @@ class App extends Component {
     this.state={
       user: userService.getUser(),
     };
-    console.log(this.state.user)
   }
   
   handleLogout = () => {

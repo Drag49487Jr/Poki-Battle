@@ -7,42 +7,35 @@ class CreateTeam extends Component{
         super();
         this.state={
             teamName:'',
-            region:''
+            region:'',
+            user: '',
+            teamId: ''
         }
     }
 
+    componentDidMount(){
+        this.setState({
+            teamName: '',
+            region: '',
+            user: this.props.user._id,
+            teamId: this.props.user.teams,
+        })
+    }
 
     handleChange = async (e) => {
         this.setState({...this.state, [e.target.name]:e.target.value })
     }
 
-
-    handleSubmit = async (e) => {
+    addTeam = async (e) => {
         e.preventDefault();
         try{
+            userService.addTeam(this.state)
             this.props.history.push({
-                pathname:'/pokemonsearch',
+                pathname:'/teamdetails/' + this.state.user,
                 state:{
-                    teamName:(this.state.teamName),
-                    region:(this.state.region)
+                    user: this.state.user
                 }
             })
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    addTeam = async (e, newTeam) => {
-        e.preventDefault();
-        try{
-            userService.addTeam(newTeam)
-            this.props.history.push({
-            pathname:'/pokemonsearch',
-            state: {
-                teamName:(this.state.teamName),
-                region:(this.state.region)
-            }
-        })
         } catch (err) {
             console.log(err)
         }

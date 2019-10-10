@@ -8,28 +8,13 @@ const pokemonSchema = new mongoose.Schema({
     weight:Number,
     abilities:String,
     types:String,
-    sprites:String,
     stats:String,
     base_experience:String,
 });
 
 const teamSchema = new mongoose.Schema({
     teamName:String,
-    region:{
-        type:String,
-        enum:[
-            'Oblivia',
-            'Kanto',
-            'Hoenn',
-            'Johto',
-            'Sinnoh',
-            'Alola',
-            'Kalos',
-            'Unova',
-            'Fiore',
-            'Almia'
-        ]
-    },
+    region: String,
     pokemons: [pokemonSchema]
 })
 

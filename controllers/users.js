@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Team = new User;
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
@@ -29,25 +30,31 @@ async function login(req, res) {
     }
 }
 
-async function createteam(req, res) {
-    // console.log(User)
-    try{
-        const user = await User.findById(req.params.id)
-        let newTeam = new User(user)
-        newTeam.save((err) => {
-            User.findOne(req.params.id, (err, user) => {
-                user.teams.push(newTeam._id)
-                user.save(err=> {
-                    if (err) console.log(err)
-                })
-            })
-        });
-    } catch (err) {
-        console.log(err)
-    }
-
+async function addteam(req, res) {
+    let user = await User.findById(req.body.user)
+    console.log(req.body)
+        let newTeam = {
+            teamName: req.body.teamName, 
+            region: req.body.region}
+        user.teams.push(newTeam)
+        user.save((err) => {
+            if(err) console.log(err)
+        })
 }
 
+async function getteams(req, res) {
+    let user = await User.findById(req.params.id)
+    return res.json(user.teams)
+}
+
+async function addpokemon(req, res) {
+    let user = await User.findById(req.body._id)
+        res.json(user)
+}
+
+async function removepokemon(req, res) {
+
+}
 function createJWT(user) {
     return jwt.sign(
         {user},
@@ -59,5 +66,8 @@ function createJWT(user) {
 module.exports = {
     signup,
     login,
-    createteam
+    addteam,
+    addpokemon,
+    removepokemon,
+    getteams,
 };

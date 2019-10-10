@@ -7,6 +7,7 @@ import PokemonPage from '../../pages/PokemonPage/PokemonPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import SignupPage from '../../pages/SignupPage/SignupPage';
 import CreateTeamPage from '../../pages/CreateTeamPage/CreateTeamPage'
+import TeamDetails from '../../pages/TeamDetails/TeamDetails';
 import './App.css';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
     this.state={
       user: userService.getUser(),
     };
+    console.log(this.state.user)
   }
   
   handleLogout = () => {
@@ -49,6 +51,13 @@ class App extends Component {
             user={this.state.user}
             history={history}
             handleLogout={this.handleLogout}
+            />
+          }/>
+            <Route exact path='/teamdetails/:id' render={({history}) =>
+            <TeamDetails 
+              history={history}
+              user={this.state.user}
+              handleLogout={this.handleLogout}
             />
           }/>
             <Route exact path='/pokemonsearch' render={({history}) => 

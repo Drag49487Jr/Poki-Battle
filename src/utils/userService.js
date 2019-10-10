@@ -1,6 +1,5 @@
 import tokenService from './tokenService';
 const BASE_URL = '/api/users/';
-const API_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 function signup(user) {
     return fetch(BASE_URL + 'signup', {
@@ -9,7 +8,6 @@ function signup(user) {
         body: JSON.stringify(user)
     })
     .then(res => {
-        console.log(res)
         if (res.ok) return res.json();
         throw new Error('Email is taken!');
     })
@@ -30,7 +28,7 @@ function login(creds) {
 }
 
 function addTeam(team) {
-    return fetch(BASE_URL + 'createteam', {
+    return fetch(BASE_URL + 'addteam', {
         method:'POST',
         headers: new Headers({'Content-Type': 'application/json'}),
         body: JSON.stringify(team)
@@ -40,16 +38,33 @@ function addTeam(team) {
     })
 }
 
-function updatePokemon() {
-    return fetch(API_URL, {
-        method:'PUT',
-        header: new Headers({'Content-Type': 'application/json'}),
-        body:JSON.stringify()
-    }).then(res => res.json());
+function getAllTeams(id) {
+    return fetch(BASE_URL + 'getteams/' + id, {
+        method: 'GET',
+        headers: new Headers({'Content-Type': 'application/json'}),
+    }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('Cant get Teams!');
+    });
+  }
+
+function addPokemon(pokemon) {
+    console.log("kakakakaka", pokemon)
+let pokemon2 ={
+    _id: pokemon
+}
+    return fetch(BASE_URL + 'addpokemon', {
+        method:'POST',
+        headers: new Headers({'Content-Type': 'application/json'}),
+        body:JSON.stringify(pokemon2)
+    }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('Pokemon not added!');
+    })
 }
 
 function removePokemon() {
-    return fetch(API_URL, {
+    return fetch(BASE_URL + 'removepokemon', {
         method:'DELETE',
         headers: new Headers({'Content-Type':'application/json'}),
         body:JSON.stringify()
@@ -69,7 +84,7 @@ export default {
     logout,
     login,
     addTeam,
-    updatePokemon,
+    getAllTeams,
+    addPokemon,
     removePokemon,
-
 };

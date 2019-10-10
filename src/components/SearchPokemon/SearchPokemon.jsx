@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import NavBar from '../NavBar/NavBar';
-import PokemonCard from '../PokemonCard/PokemonCard';
 import axios from 'axios';
+import PokemonCard from '../PokemonCard/PokemonCard';
+import userService from '../../utils/userService';
 
 class SearchPokemon extends Component {
     constructor() {
         super();
             this.state={
-                id:'',
+                // id:'',
                 searchTerm: '',
                 searchResult: '',
                 pokemon: [],
@@ -19,10 +20,17 @@ class SearchPokemon extends Component {
                 stats: [],
                 types: [],
                 weight: '',
-                teams: [],
+                // teams: [],
+                user:''
             }
     }
     
+    componentDidMount() {
+        this.setState({
+            user: this.props.user._id
+        })
+    }
+
     searchPokemon = () => {
         axios.get('https://pokeapi.co/api/v2/pokemon' + this.state.searchTerm.toLowerCase()).then((res) => res.data)
     }
@@ -34,7 +42,7 @@ class SearchPokemon extends Component {
             .then(res => 
                 this.setState({
                     pokemon: res.data,
-                    id: res.data.id,
+                    // id: res.data.id,
                     searchResult: '',
                     abilities: res.data.abilities,
                     pokemonName: res.data.name,
@@ -46,7 +54,6 @@ class SearchPokemon extends Component {
                     sprites: res.data.sprites,
                 })
             );
-            console.log(this.state.searchResult);
         } catch (err) {
             console.log(err);
         }
@@ -56,13 +63,27 @@ class SearchPokemon extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    handlePokemonUpdate = () => {
-        this.setState({ teams: this.state.pokemon});
+    addPokemon = async (e) => {
+        e.preventDefault();
+        try{
+            await userService.addPokemon(
+                this.state.user,
+                this.state.abilities
+                )
+            this.props.history.push({
+                pathname:'/pokemonsearch',
+                state: {
+                    teamName:(this.props.history.location.state.teamName),
+                    region:(this.props.history.location.state.region)
+                }
+            })
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     render() {            
         const {region,teamName} = this.props.history.location.state;
-        // const { abilities,base_experience,height,name,stats,types,sprites, moves } = this.state.pokemon;
         const abilityList = this.state.abilities.map((ability) => (
             'Ability: ' + 
             ability.ability.name[0].toUpperCase() + 
@@ -92,7 +113,7 @@ class SearchPokemon extends Component {
                 <h3>Enter Name</h3>
                 <input onChange={this.handleChange} name='searchResult' type='text' /><br/>
                 <button onClick={this.handleSearch}>Search</button><br/>
-                <button onClick={this.handlePokemonUpdate}>Add</button>
+                <button onClick={this.addPokemon}>Add</button>
                 <PokemonCard 
                     pokemonName={this.state.pokemonName}
                     height={this.state.height}
@@ -102,7 +123,7 @@ class SearchPokemon extends Component {
                     sprites={this.state.sprites}
                     stats={statsList}
                     base_experience={this.state.base_experience}
-                    teams={this.state.teams}
+                    // teams={this.state.teams}
                     />
             </div>
         )

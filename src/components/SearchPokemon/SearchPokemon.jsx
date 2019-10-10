@@ -5,8 +5,8 @@ import PokemonCard from '../PokemonCard/PokemonCard';
 import userService from '../../utils/userService';
 
 class SearchPokemon extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
             this.state={
                 // id:'',
                 searchTerm: '',
@@ -20,15 +20,14 @@ class SearchPokemon extends Component {
                 stats: [],
                 types: [],
                 weight: '',
-                // teams: [],
+                teams: '',
                 user:''
             }
     }
     
     componentDidMount() {
-        this.setState({
-            user: this.props.user._id
-        })
+      // make call to server at ID
+        axios.get(`/api/teams/`)
     }
 
     searchPokemon = () => {
@@ -43,6 +42,7 @@ class SearchPokemon extends Component {
                 this.setState({
                     pokemon: res.data,
                     // id: res.data.id,
+                    teams:[res.data.name, res.data.height, res.data.base_experience],
                     searchResult: '',
                     abilities: res.data.abilities,
                     pokemonName: res.data.name,
@@ -68,14 +68,14 @@ class SearchPokemon extends Component {
         try{
             await userService.addPokemon(
                 this.state.user,
-                this.state.abilities
+                this.state.teams,
+                console.log(this.state.teams)
+                // this.state.pokemonName,
+                // this.state.base_experience,
+                // this.state.height,
                 )
             this.props.history.push({
-                pathname:'/pokemonsearch',
-                state: {
-                    teamName:(this.props.history.location.state.teamName),
-                    region:(this.props.history.location.state.region)
-                }
+                pathname:'/pokemonsearch/' + this.props.user._id,
             })
         } catch (err) {
             console.log(err)
@@ -83,7 +83,6 @@ class SearchPokemon extends Component {
     }
 
     render() {            
-        const {region,teamName} = this.props.history.location.state;
         const abilityList = this.state.abilities.map((ability) => (
             'Ability: ' + 
             ability.ability.name[0].toUpperCase() + 
@@ -103,13 +102,12 @@ class SearchPokemon extends Component {
             stat.base_stat +'|'
         ))
 
+        console.log(this.props)
         return(
             <div>
                 <NavBar 
                     user={this.props.user}
                 />
-                    TeamName: {teamName}<br />
-                    Region: {region}
                 <h3>Enter Name</h3>
                 <input onChange={this.handleChange} name='searchResult' type='text' /><br/>
                 <button onClick={this.handleSearch}>Search</button><br/>
@@ -123,7 +121,6 @@ class SearchPokemon extends Component {
                     sprites={this.state.sprites}
                     stats={statsList}
                     base_experience={this.state.base_experience}
-                    // teams={this.state.teams}
                     />
             </div>
         )

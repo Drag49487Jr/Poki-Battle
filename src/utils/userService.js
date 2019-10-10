@@ -48,11 +48,18 @@ function getAllTeams(id) {
     });
   }
 
-function addPokemon(pokemon) {
-    console.log("kakakakaka", pokemon)
-let pokemon2 ={
-    _id: pokemon
+
+function getOneTeam() {
+    return fetch(BASE_URL)
 }
+
+function addPokemon(pokemon, p2) {
+    let pokemon2 ={
+        _id: pokemon,
+        pokemonName: p2[0],
+        height: p2[1],
+        base_experience: p2[2]
+    }
     return fetch(BASE_URL + 'addpokemon', {
         method:'POST',
         headers: new Headers({'Content-Type': 'application/json'}),
@@ -87,4 +94,5 @@ export default {
     getAllTeams,
     addPokemon,
     removePokemon,
+    getOneTeam,
 };

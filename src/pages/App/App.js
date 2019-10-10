@@ -53,14 +53,14 @@ class App extends Component {
             handleLogout={this.handleLogout}
             />
           }/>
-            <Route exact path='/teamdetails/:id' render={({history}) =>
+            <Route exact path='/teamdetails' render={({history}) =>
             <TeamDetails 
               history={history}
               user={this.state.user}
               handleLogout={this.handleLogout}
             />
           }/>
-            <Route exact path='/pokemonsearch' render={({history}) => 
+            <Route exact path='/teamdetails/:id' render={({history}) => 
             <SearchPokemon
             history={history}
             user={this.state.user}

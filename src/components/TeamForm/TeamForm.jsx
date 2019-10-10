@@ -31,7 +31,7 @@ class CreateTeam extends Component{
         try{
             userService.addTeam(this.state)
             this.props.history.push({
-                pathname:'/teamdetails/' + this.state.user,
+                pathname:'/teamdetails',
                 state:{
                     user: this.state.user
                 }

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService'
 class TeamDetails extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state= {
             teams:[]
         }
@@ -16,20 +16,17 @@ class TeamDetails extends Component {
         let teams = await userService.getAllTeams(this.props.user._id)
         console.log('teams in route',teams)
         this.setState({teams:teams})
-        console.log(this.state.teams)
     }
     render() {
-        if(this.state.teams[0]){
+        if(this.state.teams){
+        console.log(this.state.teams)
+        console.log('props', this.props)
         return(
             <div>
-                {this.state.teams.map((teams,idx) => (
-                    teams.teamName + <br />
+                {this.state.teams.map((team,idx) => (
+                    <Link key={idx} to={`/teamdetails/${team._id}`}>
+                    {team.teamName} {team.region.substring(0)}<br /></Link>
                 ))}
-                <div>{this.state.teams.map((teams) => (
-                    teams.region 
-                ))}</div>
-            {/* <div>{this.state.teams[0].teamName}</div>
-            <div>{this.state.teams[0].region}</div> */}
             </div>
         )
         

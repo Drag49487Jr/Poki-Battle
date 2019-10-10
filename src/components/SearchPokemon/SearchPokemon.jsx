@@ -7,22 +7,24 @@ class SearchPokemon extends Component {
     constructor() {
         super();
             this.state={
+                id:'',
                 searchTerm: '',
                 searchResult: '',
                 pokemon: [],
                 abilities: [],
                 base_experience: '',
                 height: '',
-                name: '',
+                pokemonName: '',
                 sprites: [],
                 stats: [],
                 types: [],
-                weight: ''
+                weight: '',
+                teams: [],
             }
     }
     
     searchPokemon = () => {
-        axios.get('https://pokeapi.co/api/v2/pokemon' + this.state.searchTerm.toLowerCase()).then((res) => console.log(res.data))
+        axios.get('https://pokeapi.co/api/v2/pokemon' + this.state.searchTerm.toLowerCase()).then((res) => res.data)
     }
 
     handleSearch = e => {
@@ -32,9 +34,10 @@ class SearchPokemon extends Component {
             .then(res => 
                 this.setState({
                     pokemon: res.data,
+                    id: res.data.id,
                     searchResult: '',
                     abilities: res.data.abilities,
-                    name: res.data.name,
+                    pokemonName: res.data.name,
                     base_experience: res.data.base_experience,
                     height: res.data.height,
                     weight: res.data.weight,
@@ -52,6 +55,10 @@ class SearchPokemon extends Component {
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
+
+    handlePokemonUpdate = () => {
+        this.setState({ teams: this.state.pokemon});
+    }
 
     render() {            
         const {region,teamName} = this.props.history.location.state;
@@ -85,8 +92,9 @@ class SearchPokemon extends Component {
                 <h3>Enter Name</h3>
                 <input onChange={this.handleChange} name='searchResult' type='text' /><br/>
                 <button onClick={this.handleSearch}>Search</button><br/>
+                <button onClick={this.handlePokemonUpdate}>Add</button>
                 <PokemonCard 
-                    name={this.state.name}
+                    pokemonName={this.state.pokemonName}
                     height={this.state.height}
                     weight={this.state.weight}
                     abilities={abilityList}
@@ -94,6 +102,7 @@ class SearchPokemon extends Component {
                     sprites={this.state.sprites}
                     stats={statsList}
                     base_experience={this.state.base_experience}
+                    teams={this.state.teams}
                     />
             </div>
         )

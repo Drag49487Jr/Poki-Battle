@@ -4,8 +4,13 @@ const SALT_ROUNDS = 6;
 
 const pokemonSchema = new mongoose.Schema({
     pokemonName: String,
-    type: String,
-    baseStat: Number, 
+    height:String,
+    weight:Number,
+    abilities:String,
+    types:String,
+    sprites:String,
+    stats:String,
+    base_experience:String,
 });
 
 const teamSchema = new mongoose.Schema({
@@ -37,7 +42,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
     }, 
     password: String,
-    team: [teamSchema]
+    teams: [teamSchema]
 }, {
     timestamps: true
 });

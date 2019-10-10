@@ -29,6 +29,24 @@ async function login(req, res) {
     }
 }
 
+async function createteam(req, res) {
+    // console.log(User)
+    try{
+        const user = await User.findById(req.params.id)
+        let newTeam = new User(user)
+        newTeam.save((err) => {
+            User.findOne(req.params.id, (err, user) => {
+                user.teams.push(newTeam._id)
+                user.save(err=> {
+                    if (err) console.log(err)
+                })
+            })
+        });
+    } catch (err) {
+        console.log(err)
+    }
+
+}
 
 function createJWT(user) {
     return jwt.sign(
@@ -41,4 +59,5 @@ function createJWT(user) {
 module.exports = {
     signup,
     login,
+    createteam
 };

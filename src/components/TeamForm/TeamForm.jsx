@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NavBar from '../NavBar/NavBar';
+import userService from '../../utils/userService';
 
 class CreateTeam extends Component{
     constructor() {
@@ -31,6 +32,23 @@ class CreateTeam extends Component{
         }
     }
 
+    addTeam = async (e, newTeam) => {
+        e.preventDefault();
+        try{
+            userService.addTeam(newTeam)
+            this.props.history.push({
+            pathname:'/pokemonsearch',
+            state: {
+                teamName:(this.state.teamName),
+                region:(this.state.region)
+            }
+        })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
     render() {
         return (
             <div>
@@ -39,7 +57,7 @@ class CreateTeam extends Component{
                 user={this.props.user}
                 handleLogout={this.props.handleLogout}
                 />
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     Enter Team Name:<input name='teamName' value={this.state.teamName} onChange={this.handleChange} type='text'></input>
                     Select Region: <select name='region' value={this.state.region} onChange={this.handleChange}>
                         <option>Oblivia</option>
@@ -53,7 +71,7 @@ class CreateTeam extends Component{
                         <option>Fiore</option>
                         <option>Almia</option>
                     </select>
-                <button>Create Team</button>
+                <button onClick={this.addTeam}>Create Team</button>
             </form>
         </div>
     )

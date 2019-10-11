@@ -117,6 +117,7 @@ class SearchPokemon extends Component {
             <div>
                 <NavBar 
                     user={this.props.user}
+                    handleLogout={this.props.handleLogout}
                 />
                 <h3>Enter Name</h3>
                 <input onChange={this.handleChange} name='searchResult' type='text' /><br/>

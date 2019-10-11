@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
+import './SignupForm.css';
 
 class SignupForm extends Component {
     state = {
@@ -37,37 +38,43 @@ class SignupForm extends Component {
         
     render() {
         return(
+        <body className='BODY'>
             <div>
-                <header>Sign Up</header>
+                <div className='row'>
+                    <div className='col-mid-10 offset=md-1'>
+                        <div className='row'>
+                            <div className='col-md-5 register-left'>
+                                <h3></h3>
+                                <p></p>
+                            </div>
+                            <div className='col-md-7 register-right'>
+                                <h2>Register</h2>
+                                <form onSubmit={this.handleSubmit}>
+                                <div className='register-form'>
+                                    <div className='form-group'>
+                                        <input type='text' class='form-control' placeholder='Name' value={this.state.name} name='name' onChange={this.handleChange}/>
+                                    </div>
+                                    <div className='form-group'>
+                                        <input type='email' class='form-control' placeholder='Email'  value={this.state.email} name='email' onChange={this.handleChange} />
+                                    </div>
+                                    <div className='form-group'>
+                                        <input type='password' class='form-control' placeholder='Password' value={this.state.password} name='password' onChange={this.handleChange} />
+                                    </div>
+                                    <div className='form-group'>
+                                        <input type='password' class='form-control' placeholder='Confirm Password' value={this.state.passwordConfirm} name='passwordConfirm' onChange={this.handleChange}/>
+                                    </div>
+                                    <button disabled={this.isFormInvalid} className='btn btn-primary'>Sign Up!</button>
+                                    <Link className='btn btn-primary' to='/'>Cancel</Link>
+                                </div>
+                        </form>
+                            </div>
+                        </div>
                 <form onSubmit={this.handleSubmit}>
-                    <div className='name'>
-                        <div>
-                            <input type='text' placeholder='Name' value={this.state.name} name='name' onChange={this.handleChange} />
-                        </div>
-                    </div>
-                    <div className='email'>
-                        <div>
-                            <input type='email' placeholder='Email' value={this.state.email} name='email' onChange={this.handleChange} />
-                        </div>
-                    </div>
-                    <div className='password'>
-                        <div>
-                            <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="password" placeholder="Confirm Password" value={this.state.passwordConfirm} name="passwordConfirm" onChange={this.handleChange} />
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <button disabled={this.isFormInvalid()}>Sign Up</button>
-                            <Link to='/'>Cancel</Link>
-                        </div>
-                    </div>
                 </form>
+                </div>
+                </div>
             </div>
+        </body>
         );
     }
 }

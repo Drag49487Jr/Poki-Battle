@@ -17,7 +17,7 @@
 ![Imgur](https://i.imgur.com/TIhDAnm.png)
 <h3>Models</h3>
 
-[!Imgur] (https://i.imgur.com/ug7stEm.png)
+[!Imgur](https://i.imgur.com/ug7stEm.png)
 <h3>Original Plan</h3>
 
 ![Imgur](https://i.imgur.com/wa3yMOf.png)

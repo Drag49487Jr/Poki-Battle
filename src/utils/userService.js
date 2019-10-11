@@ -1,4 +1,6 @@
 import tokenService from './tokenService';
+import userService from './userService';
+
 const BASE_URL = '/api/users/';
 
 function signup(user) {
@@ -41,16 +43,24 @@ function addTeam(team) {
 function getAllTeams(id) {
     return fetch(BASE_URL + 'getteams/' + id, {
         method: 'GET',
-        headers: new Headers({'Content-Type': 'application/json'}),
+        headers: new Headers({
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + userService.getUser()
+          }),
     }).then(res => {
         if(res.ok) return res.json();
         throw new Error('Cant get Teams!');
     });
   }
 
-
-function getOneTeam() {
-    return fetch(BASE_URL)
+function getTeam(user) {
+    return fetch(BASE_URL + 'getteam/' + user, {
+        method: 'GET',
+        headers: new Headers({'Content-Type': 'application/json'}),
+    }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('Cant get specific team!');
+    });
 }
 
 function addPokemon(pokemon, p2) {
@@ -94,5 +104,5 @@ export default {
     getAllTeams,
     addPokemon,
     removePokemon,
-    getOneTeam,
+    getTeam,
 };

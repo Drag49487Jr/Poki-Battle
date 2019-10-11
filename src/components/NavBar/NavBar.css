@@ -1,0 +1,21 @@
+.navbarOut{
+    background-color:rgba(0, 0, 0, 0.865);
+    height:20vh;
+    align-items: center;
+    display:flex;
+    flex-direction: row;
+    flex-flow: row-reverse;
+}
+.link{
+    display:flex;
+    color:white;
+    text-decoration: none;
+    margin:20px;
+    font-size:30px;
+}
+.image{
+    display:flex;
+    height:20vh;
+    justify-content: left;
+    margin-right:66%;
+}

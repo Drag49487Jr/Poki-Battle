@@ -14,13 +14,11 @@ class TeamDetails extends Component {
     }
     async getAllTeams() {
         let teams = await userService.getAllTeams(this.props.user._id)
-        console.log('teams in route',teams)
         this.setState({teams:teams})
+        console.log('========', this.state.teams)
     }
     render() {
         if(this.state.teams){
-        console.log(this.state.teams)
-        console.log('props', this.props)
         return(
             <div>
                 {this.state.teams.map((team,idx) => (

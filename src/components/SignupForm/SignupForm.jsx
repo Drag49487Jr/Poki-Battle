@@ -44,7 +44,6 @@ class SignupForm extends Component {
                     <div className='col-mid-10 offset=md-1'>
                         <div className='row'>
                             <div className='col-md-5 register-left'>
-                                <h3></h3>
                                 <p></p>
                             </div>
                             <div className='col-md-7 register-right'>

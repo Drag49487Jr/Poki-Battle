@@ -26,6 +26,10 @@
 
 ![Imgur](https://i.imgur.com/wa3yMOf.png)
 
+<h3>Landing Page</h3>
+
+![Imgur](https://i.imgur.com/wl0o4Fr.png)
+
 [Trello](https://trello.com/b/nbFwi2ll/project-4mern-stack)
 
 <h3>Unsolved Problems</h3>

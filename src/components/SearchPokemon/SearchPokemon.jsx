@@ -28,29 +28,19 @@ class SearchPokemon extends Component {
             }
     }
     
-    async componentDidMount() {
-        // get team id from route params
-        const requestedTeamId = this.props.match.params.id
-        console.log(requestedTeamId)
-        // get team from user teams w/ team id
-        const filteredArray = this.props.user.teams.filter(team => team._id === requestedTeamId );
-        console.log(filteredArray)
-        // get the pokemon array from the team
-        const pokemonArray = filteredArray[0].pokemons
-        console.log(pokemonArray)
-    }
+    // async componentDidMount() {
+    //     // get team id from route params
+    //     const requestedTeamId = this.props.match.params.id
+    //     console.log(requestedTeamId)
+    //     // get team from user teams w/ team id
+    //     const filteredArray = this.props.user.teams.filter(team => team._id === requestedTeamId );
+    //     console.log(filteredArray)
+    //     // get the pokemon array from the team
+    //     const pokemonArray = filteredArray[0].pokemons
+    //     console.log(pokemonArray)
+    // }
 
     async getOneTeam(user) {
-        // use req.body to send user object
-        // use user ID to find teams by user
-        
-        // use req.params.id to hold team id on request
-        // use this team id to perform crud operations on pokemon on team
-        // console.log('UUUUUUUSSSSEERRRR',user)
-        // console.log(user._id, user.teams)
-        // let oneTeam = await userService.getTeam(user._id, user._eid)
-        // this.setState({ myteam: oneTeam})
-        // console.log('myyyyuser',this.state.myteam)
         console.log(user)
     }
 

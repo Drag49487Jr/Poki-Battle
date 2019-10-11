@@ -31,14 +31,18 @@ class LoginPage extends Component {
 
     render() {
         return(
-            <div className='LoginPage'>
-                <header>Login In</header>
-                <form onSubmit={this.handleSubmit}>
+            <div className='login-box'>
+                    <h1>Login</h1>
+                  <form onSubmit={this.handleSubmit}>
+                <div className='textbox'>
                     <input type="email"  placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+                </div>
+                <div className='textbox'>
                     <input type="password" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
-                    <button>Log In</button>
-                    <Link to='/'>Cancel</Link>
-                </form>
+                </div>
+                <button>Log In</button>
+                    <button><Link to='/'>Cancel</Link></button>
+             </form>
             </div>
         );
     }

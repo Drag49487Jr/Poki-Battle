@@ -1,3 +1,39 @@
-/* .LoginPage{
-    display: flex;
-} */
+.login-box{
+    width: 400px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color:black;
+}
+.login-box h1{
+    float: left;
+    font-size: 40px;
+    border-bottom: 6px solid #FFDC32;
+    margin-bottom: 50px;
+    padding: 13px 0;
+}
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+}
+.textbox input {
+    outline: none;
+    color: black;
+    font-size: 18px;
+    width: 200px;
+    float:left;
+    margin: 1px;
+}
+.btn{
+    width: 100%;
+    background: none;
+    border: 2px solid #FFDC32;
+    color: white;
+    padding:5px;
+    cursor: pointer;
+    margin: 12px 0;
+}

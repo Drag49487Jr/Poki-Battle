@@ -1,7 +1,7 @@
 <h1>Poki Battle</h1>
 
 <h3>Introduction</h3>
-<p>Welcome to the wonderful world of Pokemon! Where you can create your ultimate team filled with a variety of pokemons! You will also be able to view your pokemon's stats and alse view your opponents team as well so you can plan a strategy against them.</p>
+<p>Welcome to the wonderful world of Pokemon! Where you can create your ultimate team filled with a variety of pokemons! You have the option to pick from 900+ pokemons...now thats A Lot! You will also be able to view your pokemon's stats and alse view your opponents team as well so you can plan a strategy against them.</p>
 
 <h3>Technologies Used</h3>
 > Mongoose<br>
@@ -12,6 +12,9 @@
 > PokiApi
 <h3>Getting Started</h3>
 
+[Trello](https://trello.com/b/nbFwi2ll/project-4mern-stack)
+
+[PokiBattle](https://pokibattle.herokuapp.com)
 <h3>ERD</h3>
 
 ![Imgur](https://i.imgur.com/TIhDAnm.png)
@@ -30,7 +33,7 @@
 
 ![Imgur](https://i.imgur.com/wl0o4Fr.png)
 
-[Trello](https://trello.com/b/nbFwi2ll/project-4mern-stack)
+
 
 <h3>Unsolved Problems</h3>
 

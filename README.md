@@ -36,7 +36,9 @@
 
 
 <h3>Unsolved Problems</h3>
-
+<p>1) You can logout however it takes you back to the home page but that page is replaced by the "PokemonBoard" instead of the "PokemonPage".</p>
+<p>2) If you clicked the search icon twice it will cause an error saying "it can't map over an object".</p>
+<p>3) If you create a team that team may not render right away so you might have to refresh the page to get the team you created back.</p>
 
 
 <h3>Future Enhancements</h3>

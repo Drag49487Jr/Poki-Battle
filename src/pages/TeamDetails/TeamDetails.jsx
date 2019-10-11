@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService'
+import './TeamDetails.css'
 class TeamDetails extends Component {
     constructor(props){
         super(props);
@@ -22,8 +23,8 @@ class TeamDetails extends Component {
         return(
             <div>
                 {this.state.teams.map((team,idx) => (
-                    <Link key={idx} to={`/teamdetails/${team._id}`}>
-                    {team.teamName} {team.region.substring(0)}<br /></Link>
+                    <div className='card'><Link className='link' key={idx} to={`/teamdetails/${team._id}`}>
+                    {'Team Name: '+team.teamName}{team.region.substring(0)}<br /></Link></div>
                 ))}
             </div>
         )

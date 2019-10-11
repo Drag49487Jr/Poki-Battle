@@ -45,11 +45,11 @@ class CreateTeam extends Component{
     render() {
         return (
             <div>
-                <h1>Create Your Team</h1>
                 <NavBar 
                 user={this.props.user}
                 handleLogout={this.props.handleLogout}
                 />
+                <h1>Create Your Team</h1>
                 <form>
                     Enter Team Name:<input name='teamName' value={this.state.teamName} onChange={this.handleChange} type='text'></input>
                     Select Region: <select name='region' value={this.state.region} onChange={this.handleChange}>

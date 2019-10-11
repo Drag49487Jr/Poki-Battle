@@ -6,7 +6,6 @@ class CreateTeamPage extends Component {
     render() {
         return(
             <div>
-                TeamForm
                 <TeamForm 
                     {...this.props}
                 />

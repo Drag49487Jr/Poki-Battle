@@ -1,0 +1,18 @@
+.card{
+    display:flex;
+    margin:10px;
+    width:20rem;
+    font-size:30px;
+    background-color:grey;
+    text-decoration: none;
+    margin-left:30%;
+}
+.link{
+    color:yellow;
+    text-decoration: none;
+    font-size:30px;
+}
+.link:hover{
+    color:orange;
+    text-decoration: none;
+}

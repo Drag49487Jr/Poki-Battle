@@ -68,10 +68,10 @@ class SignupForm extends Component {
                                 </div>
                         </form>
                             </div>
-                        </div>
-                <form onSubmit={this.handleSubmit}>
-                </form>
-                </div>
+                         </div>
+                {/* <form onSubmit={this.handleSubmit}>
+                </form> */}
+                </div> 
                 </div>
             </div>
         </body>

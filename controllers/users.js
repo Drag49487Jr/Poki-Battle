@@ -1,5 +1,4 @@
 const User = require('../models/user');
-const Team = new User;
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
@@ -40,14 +39,18 @@ async function addteam(req, res) {
             if(err) console.log(err)
         })
 }
-
-async function getteams(req, res) {
+//We want to get the user not through
+async function getTeams(req, res) {
+    console.log(req.body.user)
     let user = await User.findById(req.params.id)
     return res.json(user.teams)
 }
 
-async function getteam (req, res) {
-   
+async function getTeam (req, res) {
+    console.log('--------',req);
+    // console.log('bhifebshjfebieoud', req.params.id)
+   let user = await User.findById(console.log('I want this to be the team Id not user id',req.params.id))
+//    return res.json(console.log('gettttttttteam',user.teams.pokemons))
 }
 
 async function addpokemon(req, res) {
@@ -55,18 +58,11 @@ async function addpokemon(req, res) {
     .then(user => {
         user.team.findById()
     })
-    // let pokemon = user.teams;
-        
-        console.log('ussseerrrrr',user.teams)
-        console.log('bodyyyyyyyyy',req.body)
-    
-        let newPokemon = {
-            pokemonName: req.body.pokemonName,
-            height: req.body.height,
-            base_experience: req.body.base_experience
-        }
-        console.log('NEWWWWWPOKEMON',newPokemon)
-        // pokemon.pokemons.push(newPokemon)
+    let newPokemon = {
+        pokemonName: req.body.pokemonName,
+        height: req.body.height,
+        base_experience: req.body.base_experience
+    }
 }
 
 async function removepokemon(req, res) {
@@ -86,6 +82,6 @@ module.exports = {
     addteam,
     addpokemon,
     removepokemon,
-    getteams,
-    getteam
+    getTeams,
+    getTeam
 };

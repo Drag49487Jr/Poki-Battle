@@ -4,6 +4,7 @@ import axios from 'axios';
 import PokemonCard from '../PokemonCard/PokemonCard';
 import userService from '../../utils/userService';
 
+
 class SearchPokemon extends Component {
     constructor(props) {
         super(props);
@@ -20,14 +21,27 @@ class SearchPokemon extends Component {
                 stats: [],
                 types: [],
                 weight: '',
-                teams: '',
-                user:''
+                dataSent: '',
+                myteam: '',
+                user:'',
+
             }
     }
     
-    componentDidMount() {
-      // make call to server at ID
-        axios.get(`/api/teams/`)
+    // async componentDidMount() {
+    //     // get team id from route params
+    //     const requestedTeamId = this.props.match.params.id
+    //     console.log(requestedTeamId)
+    //     // get team from user teams w/ team id
+    //     const filteredArray = this.props.user.teams.filter(team => team._id === requestedTeamId );
+    //     console.log(filteredArray)
+    //     // get the pokemon array from the team
+    //     const pokemonArray = filteredArray[0].pokemons
+    //     console.log(pokemonArray)
+    // }
+
+    async getOneTeam(user) {
+        console.log(user)
     }
 
     searchPokemon = () => {
@@ -68,11 +82,7 @@ class SearchPokemon extends Component {
         try{
             await userService.addPokemon(
                 this.state.user,
-                this.state.teams,
-                console.log(this.state.teams)
-                // this.state.pokemonName,
-                // this.state.base_experience,
-                // this.state.height,
+                this.state.dataSent,
                 )
             this.props.history.push({
                 pathname:'/pokemonsearch/' + this.props.user._id,
@@ -102,8 +112,8 @@ class SearchPokemon extends Component {
             stat.base_stat +'|'
         ))
 
-        console.log(this.props)
         return(
+
             <div>
                 <NavBar 
                     user={this.props.user}

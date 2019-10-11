@@ -1,0 +1,36 @@
+.navbarOut{
+    background-color:rgba(0, 0, 0, 0.865);
+    height:20vh;
+    align-items: center;
+    display:flex;
+    flex-direction: row;
+    flex-flow: row-reverse;
+}
+.navbarIn{
+    background-color:rgb(255,255,102);
+    height:20vh;
+    align-items: center;
+    display:flex;
+    flex-direction: row;
+    flex-flow: row-reverse;
+}
+.navbarIn .link{
+    color:black;
+}
+.user{
+    font-size:30px;
+    margin-right:30px;
+}
+.link{
+    display:flex;
+    color:white;
+    text-decoration: none;
+    margin:20px;
+    font-size:30px;
+}
+.image{
+    display:flex;
+    height:20vh;
+    justify-content: left;
+    margin-right:66%;
+}

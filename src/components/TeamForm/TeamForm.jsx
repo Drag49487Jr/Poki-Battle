@@ -50,9 +50,9 @@ class CreateTeam extends Component{
                 handleLogout={this.props.handleLogout}
                 />
                 <h1>Create Your Team</h1>
-                <form>
-                    Enter Team Name:<input name='teamName' value={this.state.teamName} onChange={this.handleChange} type='text'></input>
-                    Select Region: <select name='region' value={this.state.region} onChange={this.handleChange}>
+                <form className='form-group'> 
+                    Enter Team Name:<input className='form-control' name='teamName' value={this.state.teamName} onChange={this.handleChange} type='text'></input>
+                    Select Region: <select className='form-control' name='region' value={this.state.region} onChange={this.handleChange}>
                         <option>Oblivia</option>
                         <option>Kanto</option>
                         <option>Hoenn</option>
@@ -64,7 +64,7 @@ class CreateTeam extends Component{
                         <option>Fiore</option>
                         <option>Almia</option>
                     </select>
-                <button onClick={this.addTeam}>Create Team</button>
+                <button className='btn btn-primary'onClick={this.addTeam}>Create Team</button>
             </form>
         </div>
     )

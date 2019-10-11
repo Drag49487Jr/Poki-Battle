@@ -120,9 +120,9 @@ class SearchPokemon extends Component {
                     handleLogout={this.props.handleLogout}
                 />
                 <h3>Enter Name</h3>
-                <input onChange={this.handleChange} name='searchResult' type='text' /><br/>
-                <button onClick={this.handleSearch}>Search</button><br/>
-                <button onClick={this.addPokemon}>Add</button>
+                <input className='form-control' onChange={this.handleChange} name='searchResult' type='text' /><br/>
+                <button className='btn' onClick={this.handleSearch}>Search</button><br/>
+                <button className='btn' onClick={this.addPokemon}>Add</button>
                 <PokemonCard 
                     pokemonName={this.state.pokemonName}
                     height={this.state.height}

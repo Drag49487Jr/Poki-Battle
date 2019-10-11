@@ -42,4 +42,7 @@
 
 
 <h3>Future Enhancements</h3>
-There wil be a button called 'challenge player' where you can challenge somebody who is online to a pokemon battle. The one being challenged can either decline or accept it. If accepted they will be taken to a seperate page where they will battle. There will also be a feature where you can message your friends while you are on the website. 
+<p>1) There wil be a button called 'challenge player' where you can challenge somebody who is online to a pokemon battle. The one being challenged can either decline or accept it. If accepted they will be taken to a seperate page where they will battle. There will also be a feature where you can message your friends while you are on the website.</p>
+<p>2) I would like to render the images with the pokemon that you searched.</p>
+<p>3) I would like the user to be able to add the pokemon to their team and once they assembled their team, they will be able to post their team onto the "PokemonBoard" to view all the other user's teams. </p>
+<p>3) I would like the user to be able to remove the pokemon if they want to.</p>

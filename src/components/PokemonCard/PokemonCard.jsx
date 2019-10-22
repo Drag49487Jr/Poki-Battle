@@ -17,6 +17,7 @@ class PokemonCard extends Component {
                         {this.props.weight ? <p>Weight: {this.props.weight}</p> : null}
                         {this.props.types ? <p>{this.props.types}</p> : null}
                         {this.props.stats ? <p>{this.props.stats}</p> : null}
+                        {<img src={this.props.sprites}></img>}
                         {this.props.base_experience ? <p>Base Experience: {this.props.base_experience}</p> : null}
                 </div>
             )

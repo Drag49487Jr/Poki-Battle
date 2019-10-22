@@ -112,13 +112,13 @@ class SearchPokemon extends Component {
             stat.base_stat +'|'
         ))
 
+        console.log('-----------',this.state.sprites)
         return(
-
             <div>
                 <NavBar 
                     user={this.props.user}
                     handleLogout={this.props.handleLogout}
-                />
+                    />
                 <h3>Enter Name</h3>
                 <input className='form-control' onChange={this.handleChange} name='searchResult' type='text' /><br/>
                 <button className='btn' onClick={this.handleSearch}>Search</button><br/>
@@ -129,7 +129,7 @@ class SearchPokemon extends Component {
                     weight={this.state.weight}
                     abilities={abilityList}
                     types={typeList}
-                    sprites={this.state.sprites}
+                    sprites={this.state.sprites.front_default}
                     stats={statsList}
                     base_experience={this.state.base_experience}
                     />
